@@ -1,0 +1,11 @@
+<apex:page standardController="Account" extensions="SampleController">
+  <apex:form id="changeDescription">
+    <apex:pageBlock >
+        <p>Current description: {!Account.Comments_1__c}</p>
+        <p>Boolean flag: {!IsCommentUpdate}</p>
+        <p>Change description to:</p> 
+        <apex:inputTextarea id="newDesc" value="{!Account.Comments_1__c}"/><p/>
+        <apex:inputTextarea id="newDesc1" value="{!Account.Comments_2__c}"/><p/>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

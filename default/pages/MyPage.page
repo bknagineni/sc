@@ -1,0 +1,19 @@
+<apex:page controller="myPageController" tabStyle="Account">
+<apex:form >
+<apex:sectionHeader title="My Page" />
+<apex:pageBlock title="" id="pageBlock">
+<apex:pageBlockButtons location="top">
+<apex:inputField id="accountType" value="{!Account.Type}" />
+<apex:commandButton value="View" action="{!ViewAccounts}" id="theButton" rerender="pageBlock"></apex:commandButton>
+</apex:pageBlockButtons>
+<apex:pageMessages ></apex:pageMessages>
+<apex:pageBlockTable value="{!accounts}" var="a" rendered="{!NOT(ISNULL(accounts))}">
+<apex:column >
+<apex:facet name="header">Account Name</apex:facet>
+<apex:outputLink value="/{!a.Id}" target="_blank">{!a.Name}</apex:outputLink>
+</apex:column>
+<apex:column value="{!a.type}"></apex:column>
+</apex:pageBlockTable>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

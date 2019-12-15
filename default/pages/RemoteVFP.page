@@ -1,0 +1,43 @@
+<apex:page controller="TestController"> 
+<script> 
+function firstfun() 
+{ 
+secfunc(); 
+} 
+
+function secfunc2() 
+{ 
+try 
+{ 
+alert('Hi');
+TestController.CreatepuserRemote(function(result, event){ 
+
+alert(event.message); 
+if (event.status) 
+{ 
+alert('inside event.status if condition'); 
+} 
+
+}, {escape:false} 
+
+); 
+} 
+catch(e) 
+{ 
+alert('Exception'+e); 
+
+} 
+
+
+} 
+
+</script> 
+<apex:form > 
+<apex:actionFunction name="secfunc" oncomplete="secfunc2();"/> 
+<apex:pageblock > 
+<apex:pageBlockButtons > 
+<apex:commandButton value="Remote Call" onclick="firstfun();return false;" /> 
+</apex:pageBlockButtons> 
+</apex:pageblock> 
+</apex:form> 
+</apex:page>

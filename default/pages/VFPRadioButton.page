@@ -1,0 +1,71 @@
+<apex:page standardController="contact" extensions="RadioButton" showheader="true">
+<apex:pageMessages id="pgMsg" escape="false">
+    </apex:pageMessages>
+<apex:form >
+<apex:pageblock id="allcons" title="Available Contacts">
+
+               <apex:pageblocktable id="allcons" value="{!AllContacts}" var="allcon">
+                    <apex:column headervalue="Set as Primary">                    
+                       <apex:actionsupport action="{!selectcon}" event="onclick" rerender="consel,allcons">  
+                        <input type="radio" />                    
+                            <apex:param name="conid" value="{!allcon.Id}">
+                        </apex:param></apex:actionsupport>                            
+                    </apex:column>    
+                    <apex:column headervalue="Last Name">
+                        <apex:outputfield value="{!allcon.LastName}">
+                    </apex:outputfield></apex:column> 
+                    <apex:column headervalue="First Name">
+                        <apex:outputfield value="{!allcon.FirstName}">
+                    </apex:outputfield></apex:column>  
+                    <apex:column headervalue="Email">
+                        <apex:outputfield value="{!allcon.Email}">
+                    </apex:outputfield></apex:column>  
+                    <apex:column headervalue="Phone">
+                        <apex:outputfield value="{!allcon.Phone}">
+                    </apex:outputfield></apex:column>  
+                    <!-- -->
+                    <apex:column headervalue="Set as Primary">                    
+                        <input type="radio" name="conid" value="{!allcon.Id}" onclick="changeValue(this,'{!$Component.RadioButtonValue}');"  />                    
+                    </apex:column> 
+                       
+                </apex:pageblocktable>
+                <apex:inputHidden value="{!selectedValue}" id="RadioButtonValue" />
+                <apex:outputText value="{!selectedValue}" id="out"/>
+                <apex:commandButton value="test" action="{!test}" onclick="javascript:getfunction();" />
+                <script>
+                function getfunction()
+                {
+                    alert('@@@@@@'+'{!$Component.RadioButtonValue.value}');
+                    var v = '{!selectedValue}';
+                    if(v=='')
+                    {
+                        alert('helloeee');
+                        return false;
+                    }
+                    
+                }
+        function changeValue(input, textid) {
+            
+            alert('hello'+input.value);
+            document.getElementById(textid).value = input.value;
+        }
+    </script>
+</apex:pageblock> 
+<apex:pageblock id="consel" title="Selected Contact">
+            <apex:pageblocktable id="allcons" value="{!selectedContact}" var="selcon">                       
+                    <apex:column headervalue="Last Name">
+                        <apex:outputfield value="{!selcon.LastName}">
+                    </apex:outputfield></apex:column> 
+                    <apex:column headervalue="First Name">
+                        <apex:outputfield value="{!selcon.FirstName}">
+                    </apex:outputfield></apex:column>  
+                    <apex:column headervalue="Email">
+                        <apex:outputfield value="{!selcon.Email}">
+                    </apex:outputfield></apex:column>  
+                    <apex:column headervalue="Phone">
+                        <apex:outputfield value="{!selcon.Phone}">
+                    </apex:outputfield></apex:column>  
+                </apex:pageblocktable>
+</apex:pageblock>               
+</apex:form>
+</apex:page>

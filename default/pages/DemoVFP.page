@@ -1,0 +1,12 @@
+<apex:page controller="Customer">
+    <apex:form >
+                <apex:commandButton value="Save" action="{!saveNew}"/>      
+           
+        
+            Name<apex:inputText value="{!aName}"/>
+            employee<apex:inputText value="{!aEmp}"/>
+            phone<apex:inputText value="{!aPhone}"/>
+         
+                       
+    </apex:form>    
+</apex:page>

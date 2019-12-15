@@ -1,0 +1,57 @@
+<apex:page standardController="Sample__c" extensions="ExtendSampleController">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:commandButton value="Add Project" action="{!navigateUrl}"></apex:commandButton>&nbsp;
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <!--<apex:pageBlockSection title="Search" columns="2">
+               <apex:inputField value="{!Sample__c.Project_Name__c}" id="prjName" required="false" />
+               <apex:commandButton value="Go" action="{!SampleProjects}"/>
+               <apex:outputText value="{!Sample__c.Project_Name__c}"> </apex:outputText>
+               <apex:outputText value="{!Sample__c.Description__c}"> </apex:outputText>
+            </apex:pageBlockSection>-->
+            <apex:pageBlockSection title="list of Projects" columns="2">
+            <!-- genearal displaying part(while clicking on project Id respective information will be displayed)-->
+            
+            <apex:dataTable value="{!Projects}" var="prjList" styleClass="list">
+                <apex:column colspan="4" >
+                    <apex:facet name="header">Project Id</apex:facet>
+                    <apex:commandLink >{!prjList.name}
+                    <apex:param name="id" value="{!prjList.id}"/>
+                    </apex:commandLink>
+            <!--normal display<apex:outputText value="{!prjList.name}"> </apex:outputText>-->
+                </apex:column>
+                <apex:column >    
+                        <apex:facet name="header">Mouseover</apex:facet>
+                        <apex:outputPanel >
+                            <apex:actionSupport event="onmouseover" rerender="detail">
+                                <apex:param name="id" value="{!prjList.id}"/>
+                            </apex:actionSupport>
+                                {!prjList.Name}
+                        </apex:outputPanel>
+                </apex:column>
+                
+                    <apex:facet name="header">Project Name</apex:facet>
+                    <apex:outputText value="{!prjList.Project_Name__c}"> </apex:outputText>
+                
+                <apex:column >
+                    <apex:facet name="header">Technologies Used</apex:facet>
+                    <apex:outputText rendered="true" value="{!prjList.Technologies__c}"> </apex:outputText>
+                </apex:column>
+            </apex:dataTable>
+        </apex:pageBlockSection>
+        </apex:pageBlock>
+        <!--<apex:detail subject="{!$CurrentPage.parameters.id}" relatedList="false" title="false"/>-->
+        <apex:outputPanel id="detail">
+            <apex:actionStatus startText="Requesting...">
+            <apex:facet name="stop">
+            <apex:detail subject="{!$CurrentPage.parameters.id}" relatedList="false"
+            title="false"/>
+            </apex:facet>
+            </apex:actionStatus>
+        </apex:outputPanel>
+    <apex:commandButton action="{!TestNumber}" value="TestValue"/>
+    </apex:form>
+</apex:page>

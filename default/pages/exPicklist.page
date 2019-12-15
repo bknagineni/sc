@@ -1,0 +1,13 @@
+<apex:page standardController="User">
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>User display</h1>
+  <apex:form >
+      <apex:pageBlock >
+          <apex:pageBlockSection title="User Info">
+              <apex:inputField value="{!User.ProfileId}"/>
+              <apex:outputField value="{!User.Name}"/>    
+          </apex:pageBlockSection>
+      </apex:pageBlock>
+  </apex:form>
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

@@ -1,0 +1,11 @@
+<apex:page standardcontroller="Lead" extensions="LeadDeleteExtension">
+  <apex:pageMessages />
+  <apex:pageBlock title="Lead"> 
+    <apex:outputField value="{!Lead.Name}" /><br />
+    <apex:outputField value="{!Lead.Company}" /><br />
+    <apex:outputField value="{!Lead.Phone}" /><br />
+    <apex:form >
+      <apex:commandButton action="{!deleteLead}" value="Delete" />
+    </apex:form>
+  </apex:pageBlock>
+</apex:page>

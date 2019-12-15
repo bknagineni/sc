@@ -1,0 +1,39 @@
+<apex:page standardController="Account" extensions="Client_AC_AccountHelper">
+<script type="text/javascript">
+
+  alert('Seclected Account Name@@@@'+'{!selectedId}');
+    alert('Seclected Account Opps@@@@'+'{!listWrapper}');
+  
+</script> 
+  <apex:form id="frmAccount">
+      <apex:pageblock id="pbopps">
+          <apex:outputText value="Account Name"></apex:outputText>
+          <apex:selectList id="accountname" size="1" value="{!selectedId}" >
+                <apex:selectOptions value="{!pickList}"/>
+                <apex:actionSupport event="onchange">
+                       <apex:param name="selectedVal" value="{!pickList}" assignTo="{!selectedId}"/>
+                </apex:actionSupport>
+           </apex:selectList>
+           <apex:outputText value="{!selectedId}" label="You have selected:"/>
+           <apex:pageBlockTable value="{!listWrapper}" var="w">
+           
+               <!--<apex:column > 
+                   <apex:facet name="header">
+                       <apex:inputCheckbox value="{!allBool}">
+                           <apex:actionSupport action="{!selectAll}" event="onchange" reRender="pbopps"/>
+                       </apex:inputCheckbox>
+                   </apex:facet>
+                   <apex:inputCheckbox value="{!w.checked}"/>
+               </apex:column>-->
+               
+               <apex:column value="{!w.opp.Name}"/>
+               <apex:column value="{!w.opp.id}"/>
+            </apex:pageBlockTable> 
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!saveOpps}" reRender="frmAccount"/>
+            </apex:pageBlockButtons>
+      
+      </apex:pageblock>
+      
+  </apex:form>
+</apex:page>

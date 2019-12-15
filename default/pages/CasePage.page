@@ -1,0 +1,13 @@
+<apex:page standardController="case" recordSetVar="caserec">
+  <apex:form >
+      <Apex:pageblock >
+          <apex:pageBlockSection >
+              <apex:pageBlockTable value="{!caserec}" var="cs">
+                  <apex:column value="{!cs.accountid}"></apex:column>
+                  <apex:column value="{!cs.status}"/>
+                  <apex:column value="{!cs.CaseNumber}"/>
+              </apex:pageBlockTable>
+          </apex:pageBlockSection>
+      </Apex:pageblock>
+  </apex:form>
+</apex:page>

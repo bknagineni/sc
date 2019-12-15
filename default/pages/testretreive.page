@@ -1,0 +1,10 @@
+<apex:page standardController="Account">
+    <apex:form >
+        <apex:image url="{!$Resource.SampleImage}" width="150" height="140"/>
+        <apex:pageBlock title="Account Info">
+            <apex:pageBlockTable value="{!account.Contacts}" title="Account Details" var="account">
+                <apex:column value="{!account.name}"/>
+            </apex:pageBlockTable>
+         </apex:pageBlock>
+    </apex:form>
+ </apex:page>

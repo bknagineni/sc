@@ -1,0 +1,59 @@
+<apex:page >
+<script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js">
+</script>
+<script language="JavaScript" type="text/javascript">  
+var _gaq = _gaq || [];  
+_gaq.push(['_setAccount', 'UA-38140902-1']);  
+_gaq.push(['_setDomainName', 'force.com']); 
+_gaq.push(['_setCustomVar', 1, 'Client', 'Development', 3]); 
+_gaq.push(['_trackPageview']);  
+(function() 
+{    
+var ga = document.createElement('script'); 
+ga.type = 'text/javascript'; 
+ga.async = true;    
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    
+var s = document.getElementsByTagName('script')[0]; 
+s.parentNode.insertBefore(ga, s);  
+}
+)
+();  
+function submitSearchForm() 
+{        
+var searchField = document.getElementById('advsearchfield');        
+var issearchexact = document.getElementById('asPhrase');        
+var searchFieldModified = escape(searchField.value);     
+if (issearchexact.checked == true) 
+{            
+document.advsrch.action = '/search/SearchResults?searchType=2&search=Search&asPhrase=1&sen=0&str=' + searchFieldModified;        
+} 
+else 
+{            
+document.advsrch.action = '/search/SearchResults?searchType=2&search=Search&sen=0&str=' + searchFieldModified.replace(/ /g, "+");        
+}        
+return true;    
+}    
+function PopupCenter(pageURL, title, w, h) 
+{        
+var left = (screen.width / 2) - (w / 2);        
+var top = (screen.height / 2) - (h / 2);        
+try 
+{            
+var targetWin = window.open(pageURL, title, 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,copyhistory=no,                     width=700,height=400,top=' + top + ',left=' + left);        
+} 
+catch (err) 
+{            
+alert(err.description)        
+}    
+}
+</script>
+<apex:form id="advsrch">
+<apex:inputText id="advsearchfield" title="Go!" maxlength="80" size="19"/>
+<apex:commandButton id="btn" value="Go!" /> 
+<input id="asPhrase" name="asPhrase" type="checkbox"></input> 
+<label for="asPhrase">Exact match</label>
+<a onclick="PopupCenter('/apex/Base_VFP_KeywordSearch_HelpText', 'KeywordSearchHelp',700,400);" href="javascript:void(0);"><img class="infoIcon" title="" alt="" src="/s.gif"></img> </a> 
+<div class="labelCol"><a onclick="PopupCenter('/apex/Base_VFP_KeywordSearch_HelpText', 'KeywordSearchHelp',700,400);" href="javascript:void(0);"></a>
+<a href="/apex/Base_VFP_SupplierAdvancedSearch_V2"><b>Advanced Supplier Search</b></a></div> <div class="labelCol"><a onclick="PopupCenter('/apex/Base_VFP_KeywordSearch_HelpText', 'KeywordSearchHelp',700,400);" href="javascript:void(0);"></a></div>
+</apex:form>>
+</apex:page>

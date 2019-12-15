@@ -1,0 +1,51 @@
+<apex:page id="pageForm" controller="formController">
+  <apex:form id="form" onsubmit="changeValue()" >
+    <apex:inputText id="textFld" value="{!myObject.textData}" />
+    <apex:inputhidden id="otherName" value="{!myObject.hiddenField}" />
+    <apex:commandButton value="Submit Data" id="btnCopy" rerender="newData" />
+    <script>
+      var btnCopy = document.getElementById("{!$Component.btnCopy}");
+      var textFld = document.getElementById("{!$Component.textFld}");
+      var otherName = document.getElementById("{!$Component.otherName}");
+    </script>
+  </apex:form>
+  <apex:outputPanel id="newData">
+    Posted value: {!myObject.textData}<br/>
+    Action Result: {!myObject.website}
+  </apex:outputPanel>
+
+  <!-- Defining Javascript array variable -->
+  <script> var arrData = []; </script>
+
+  <!-- Adding repeat component and grabbing arrayData (use ad to reference item) -->
+  <apex:repeat value="{!myObject.arrayData}" var="ad">
+    <!-- Pushing item into Javascript array -->
+    <script>arrData.push("{!ad}");</script>
+  </apex:repeat>
+
+  <!-- Put a container in the page to show the array -->
+  <ul id="arrayContainer" />
+  
+  <script>
+    window.onload = new function() { submitForm(); };
+    //Function to show the array elements from Javascript
+    function showArray() {
+      for (var i in arrData) {
+        var li = document.createElement("li");
+        li.appendChild(document.createTextNode(arrData[i]));
+        document.getElementById("arrayContainer").appendChild(li);
+      }
+    }
+
+    function submitForm() {
+      //Iterate our JS array when the page loads.
+      showArray();
+      textFld.value = "Set from onLoad event";
+      btnCopy.click();
+    }
+    function changeValue() {
+      otherName.value = "NO MORE LOREM IPSUM";
+      return true;
+    }
+  </script>
+</apex:page>

@@ -1,0 +1,14 @@
+<apex:page controller="compositionExample">
+    <apex:messages />
+    <apex:composition template="myFormComposition">
+        <apex:define name="meal">
+            <apex:outputLabel value="Enter your favorite meal: " for="mealField"/>
+            <apex:inputText id="mealField" value="{!mealField}"/>
+        </apex:define>
+        <apex:define name="age">
+            <p>You look great for your age!</p>
+        </apex:define>
+    </apex:composition>
+    <apex:outputText id="greeting" rendered="{!showGreeting}" value="Hello {!nameField}.
+    Would you like some delicious {!mealField}?"/>
+</apex:page>

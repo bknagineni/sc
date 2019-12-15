@@ -1,0 +1,15 @@
+<apex:page controller="savecontact">
+
+    <apex:form >
+
+<apex:panelgrid columns="2">
+
+        LastName:<apex:inputText value="{!lastname}" />
+
+        EmailId:<apex:inputText value="{!mailid}" /> 
+
+<apex:commandbutton value="Save" Action="{!insertcontact}" />
+
+</apex:panelgrid>
+</apex:form>
+</apex:page>

@@ -1,0 +1,8 @@
+<apex:page controller="findSmithAccounts">
+    <apex:form >
+        <c:smithAccounts >
+            <apex:inputField value="{!SmithAccounts}"/>
+            <apex:inputField value="{!s_account.Name"/>
+        </c:smithAccounts>
+    </apex:form>
+</apex:page>

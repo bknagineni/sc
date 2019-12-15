@@ -1,0 +1,12 @@
+<apex:page standardController="Contact" extensions="ItemSearchEditController"> 
+<apex:form > 
+    
+    <apex:sectionHeader title="Contact" subtitle="{!Contact.name}"/> 
+    <apex:pageBlock title="Contact"> 
+        <apex:pageBlockSection title="New Section" columns="2">
+            <apex:outPutField value="{!Contact.AccountId}"/> 
+            <apex:outPutField value="{!Contact.FirstName}"/> 
+            <apex:outPutField value="{!Contact.MailingCity}"/> 
+      </apex:pageBlockSection> 
+      <apex:outputLabel value="{!MyParameter}"></apex:outputLabel>
+    </apex:pageBlock> </apex:form> </apex:page>

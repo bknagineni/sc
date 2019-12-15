@@ -1,0 +1,11 @@
+<apex:page standardController="Account" contenttype="application//vnd.ms-excel" >
+    <apex:form >
+        <apex:pageBlock title="Contacts">
+            <apex:pageBlockTable value="{!account.contacts}" var="contact">
+                <apex:column value="{!contact.Name}"/>
+                <apex:column value="{!contact.MailingCity}"/>
+                <apex:column value="{!contact.Phone}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

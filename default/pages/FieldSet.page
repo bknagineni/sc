@@ -1,0 +1,50 @@
+<apex:page controller="actionFunction_FieldSet" title="Field Set Use">
+   <apex:form >
+       <!-- Action function to determine required status for No of employee field -->
+       <apex:actionFunction name="jsSetNoOfEmpReq" action="{!actionFunctionM}" immediate="true" reRender="pbsFS">
+           <apex:param assignTo="{!IsActive}" value="IsActive" id="IsActive" name="noEmpR"/>
+       </apex:actionFunction>
+       <script>
+           
+           var numberofemployeesID;
+           function setNoOfEmpReq(ctrlIsActive)
+               {
+                    
+                    //Assign value to the no of employee field
+                    if(document.getElementById(numberofemployeesID) != null)
+                        document.getElementById(numberofemployeesID).value = 5;
+                    //action function call 
+                    jsSetNoOfEmpReq(ctrlIsActive.value);
+               }
+       </script>
+       <apex:pageBlock title="Field Set Use">
+       <apex:pageBlockSection title="Field Set Use" id="pbsFS">
+           <apex:repeat value="{!$ObjectType.Account.FieldSets.Account_Field_Set}" id="ctrlRepeat" var="fieldAPIName">
+               <!-- 
+                    1. We have cretaed there input fields one will only if active__c field comes trough field set
+                    2. second when numberofemployees comes
+                    3. For other field
+                    
+                    Using such design we can have the dynamic design as well we can use onclick or onchange events on fields
+                -->
+               <apex:inputField value="{!account[fieldAPIName]}" onchange="setNoOfEmpReq(this);" rendered="{!IF(CONTAINS(LOWER(fieldAPIName), 'active__c') , true , false)}"/>
+               <apex:inputField value="{!account[fieldAPIName]}" required="{!noOfEmpReq}" rendered="{!IF(CONTAINS(LOWER(fieldAPIName), 'numberofemployees') , true , false)}" id="NoOfEmp" />
+               <apex:inputField value="{!account[fieldAPIName]}" rendered="{!IF(OR(CONTAINS(LOWER(fieldAPIName), 'active__c') , CONTAINS(LOWER(fieldAPIName), 'numberofemployees')) , false , true)}" /> 
+               
+               <script>
+               <$Label.test> 
+               /*
+                   Set the id for numberofemployeesID field can be used in java script
+               */
+               if({!CONTAINS(LOWER(fieldAPIName), 'numberofemployees')})
+                   {
+                       numberofemployeesID = '{!$Component.ctrlRepeat}:NoOfEmp';
+                   }
+               </script>
+           </apex:repeat>
+           <Apex:outputLabel value="{!currentDate}"></Apex:outputLabel>
+           <apex:commandButton value="Submit" style="width:150px" id="btnSubmit"  />
+       </apex:pageBlockSection>
+       </apex:pageBlock>
+   </apex:form>>
+</apex:page>

@@ -1,0 +1,5 @@
+<apex:page >
+<script>
+  <apex:includeScript value="{!URLFOR($Resource.Hidesidebar, 'file.js')}"/>/>
+  </script>
+</apex:page>

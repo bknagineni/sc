@@ -1,0 +1,8 @@
+<apex:page title="New" standardController="account">
+      Hello {!$User.FirstName} {!$UserRole.Name}
+     {!IF(contains($UserRole.Name, "EO"), "Parts", "Service")}<br/>
+     {!Left('Test Supplier name CVM Partner User', 17)}<br/>
+     {!IF(contains('Test Supplier name CVM Partner User', "CVM Partner User"), "test", "Service")}<br/>
+     {!Left($UserRole.Name,(FIND($Label.ap_About, $UserRole.Name) - 1))}
+     
+</apex:page>

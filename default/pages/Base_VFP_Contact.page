@@ -1,0 +1,5 @@
+<apex:page id="pgContact" standardController="contact" action="{!sendEmailtoPortalUser}" extensions="Global_AC_Contact">
+<apex:form >
+    <apex:image url="https://ap1.salesforce.com/resource/1465296950000/MileageHelper__Image"/>
+</apex:form>
+</apex:page>

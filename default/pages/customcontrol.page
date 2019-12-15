@@ -1,0 +1,17 @@
+<apex:page controller="MyController">
+    <apex:form >
+       <apex:pageBlock mode="edit">
+       <apex:pageMessages />
+        <apex:pageBlockSection >
+            <apex:inputField value="{!Account.name}"/>
+            <apex:inputField required="true" value="{!Account.phone}"/>
+            <apex:inputField value="{!Account.industry}"/>
+            <apex:inputField required="true" value="{!Account.Birth_Date__c}"/>
+            
+        </apex:pageBlockSection>
+        <apex:pageBlockButtons location="bottom">
+            <apex:commandButton value="Save" action="{!save}"/>
+        </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

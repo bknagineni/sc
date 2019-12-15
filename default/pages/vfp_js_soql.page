@@ -1,0 +1,64 @@
+<apex:page >
+<script language="JavaScript1.2" src="/js/functions.js"></script>
+
+<script src="/soap/ajax/9.0/connection.js" type="text/javascript"></script>
+
+<script id="clientEventHandlersJS" language="javascript">
+
+
+function test()
+{
+    alert('HI');
+    
+    sforce.connection.sessionId = '{!$Api.Session_ID}';
+    try
+
+    {
+
+    //alert('Select Name, Id From Contact ORDER BY Name');
+
+    var qr = sforce.connection.query("SELECT id,name FROM Contact");
+
+    var records = qr.getArray("records");
+
+    alert('qr '+qr);
+    return false;    
+
+    }
+
+catch (error)
+
+    {
+
+    alert(error.faultstring);
+
+    }
+
+
+}
+
+
+
+</script>
+
+<body>
+
+ 
+
+<select name="select_0" id="select_0" MULTIPLE="multiple" width="200" size="10">
+
+ 
+
+<option value="">--None--</option>
+
+ 
+
+</select>
+
+</body>
+<apex:form >
+    <apex:pageBlock >
+        <apex:commandButton value="testing" onClick="test();"/>
+    </apex:pageBlock>
+</apex:form>
+</apex:page>

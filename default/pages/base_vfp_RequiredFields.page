@@ -1,0 +1,32 @@
+<apex:page standardController="Account" standardStylesheets="true">
+<apex:form >
+<script>
+     function testcheck1(getElement)
+        {
+         //YUIShowLoading();
+         var test=getElement.value;
+         alert(test);
+        testcheck();
+        }    
+</script>
+  <apex:pageBlock id="pgSupplier" >
+      <apex:actionFunction name="testcheck" rerender="pbsProfileStakeholdersInfo"/>
+      <apex:pageBlockSection id="pbsProfileStakeholdersInfo" rendered="{!IF($ObjectType.Account.FieldSets.Account_Field_Set.size >0  ,true,false)}" columns="2" title="Test Mandatory" collapsible="false">
+                <apex:pageBlockSection columns="1">
+                    <apex:repeat id="stakeRepeatId" value="{!$ObjectType.Account.FieldSets.Account_Field_Set}" var="GS">
+                        
+                        <apex:inputField id="txtne" required="{!GS.required}" value="{!account[GS]}" rendered="{!IF(CONTAINS(Lower(GS), 'numberofemployees'),true,false)}" onblur="testcheck1(this);"/>
+                        <apex:inputField required="{!GS.required}" value="{!account[GS]}" rendered="{!IF(CONTAINS(Lower(GS), 'name'),true,false)}"/>
+                        <script>
+                            alert('test'+'{!account.NumberOfEmployees}');
+                            //alert('final'+getElementbyId(j_id0:j_id1:pgSupplier:pbsProfileStakeholdersInfo:j_id4:stakeRepeatId:1:txtne));
+                            //alert('hello----->'+txtne.value);
+                        </script>
+                        
+                        <apex:inputField value="{!account.Birth_Date__c}" required="{!if((account.NumberOfEmployees<=10),true,false)}" rendered="{!IF(CONTAINS(Lower(GS), 'mileagehelper__birth_date__c'),true,false)}" />
+                    </apex:repeat>
+                </apex:pageBlockSection>
+            </apex:pageBlockSection>
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

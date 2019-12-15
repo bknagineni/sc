@@ -1,0 +1,25 @@
+<apex:page controller="ListsMapsController">
+    
+        
+        <apex:form >
+            <apex:pageblock >
+            <apex:pageBlockSection columns="1" >
+                
+                <apex:pageBlockTable value="{!listUserHistoryWrapper}"   var="item">
+                <apex:column headerValue="dateformat">
+                    <apex:outputLabel value="{!item.DateOfAction}"></apex:outputLabel></apex:column>
+                     <apex:column headerValue="Email">
+                    <apex:outputLabel value="{!item.Email}"></apex:outputLabel></apex:column>
+                      <apex:column headerValue="Old Email">
+                    <apex:outputLabel value="{!item.oldEmail}"></apex:outputLabel></apex:column>
+                    
+                     
+                </apex:pageBlockTable>
+                <apex:commandButton value="submit" action="{!submitFieldData}"/>
+             </apex:pageBlockSection>
+            </apex:pageblock>
+            
+
+        </apex:form>
+    
+</apex:page>

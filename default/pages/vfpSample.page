@@ -1,0 +1,21 @@
+<apex:page standardController="Position__c" id="thepage">
+
+    <apex:form >
+        <apex:pageBlock >
+             <apex:pageblockbuttons location="both">
+                    <apex:commandButton action="{!Save}" value="Save"/>
+                    <apex:commandButton action="{!Cancel}" value="Cancel"/>
+              </apex:pageblockbuttons>
+            <apex:pageblocksection columns="1" >
+                <apex:inputfield value="{!Position__c.Functional_Area__c}">  </apex:inputfield>
+                <!--<apex:inputfield value="{!Position__c.Job_Description__c}"> </apex:inputfield>        -->
+            </apex:pageblocksection>
+        </apex:pageBlock> 
+<apex:pageBlock >
+<apex:pagemessages ></apex:pagemessages>
+        <apex:detail relatedList="true" />
+       <!--<apex:Pageblocktable value="{!MileageHelper__Position__c.MileageHelper__Job_Application__r}" var="JA" title="Job Applications">
+        </apex:Pageblocktable>-->
+</apex:pageBlock>
+    </apex:form>
+</apex:page>

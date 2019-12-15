@@ -1,0 +1,8 @@
+<apex:component controller="findSmithAccounts" access="global">
+<apex:dataTable value="{!SmithAccounts}" var="s_account">
+<apex:column >
+<apex:facet name="header">Account Name</apex:facet>
+{!s_account.Name}
+</apex:column>
+</apex:dataTable>
+</apex:component>

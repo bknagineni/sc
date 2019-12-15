@@ -1,0 +1,43 @@
+<apex:page id="thePage" sidebar="false" showHeader="true" >
+<!-- The following script element contains a simple function for changing the font. -->
+    <script>
+        function changeFont(input, textid) {
+        if(input.checked) document.getElementById(textid).style.fontWeight = "bold";
+        else document.getElementById(textid).style.fontWeight = "normal";
+        }
+        function checkval()
+        {
+            //j = "2";
+            //document.write("hi"+j.sup())
+            //alert("\U03c8")
+           /* var g = prompt("How many grams are there?", "");
+            var r = prompt("How many grams per mole are there?", "");
+            var m = g / r;
+            var m1 = m + "";
+            var m2 = m1.length;
+            var m3 = parseFloat(m2);
+            var m4 = '<sup>'+m2+'</sup>';
+            var m5 = m3 - 1;
+            var m6 = m/10^m5;
+            var str = "There are " + m6 + " x 10" + m4 + " moles.<p>Click to close";
+            
+            alert(str)
+            alert("H\u2082O is water"); */
+            //if(document.getElementById(textid).style.fontWeight )
+            return false;
+        }
+    </script>
+<!-- The first outputPanel calls the function, passing in the existing occurance
+of the checkbox, as well as the DOM ID of the output component. -->
+    <apex:outputPanel layout="block">
+        <label for="checkbox">Click this box to change text font: </label>
+        <input id="checkbox" type="checkbox"
+        onclick="changeFont(this,'{!$Component.thePanel}');"/>
+        <input type="text" id="txtId"/>
+    </apex:outputPanel>
+<!-- The second outputPanel contains the text that will be changed. -->
+<apex:outputPanel id="thePanel" layout="block">Change me!
+</apex:outputPanel>
+<apex:form ><apex:commandButton id="cmbtnSave" onclick="checkval()"/ value="Check"></apex:form>
+
+</apex:page>

@@ -1,0 +1,8 @@
+<apex:page controller="Base_AC_AuthorizeDotNetIntegration">
+  <!-- Begin Default Content REMOVE THIS -->
+  <apex:form >
+      <apex:outputText value="{!loginID}"></apex:outputText>  
+      <apex:outputText value="hi"></apex:outputText> 
+      {!$Setup.SecuritySettings__c.AuthorizeDotNet_LoginID__c}
+  </apex:form>  <!-- End Default Content REMOVE THIS -->
+</apex:page>
