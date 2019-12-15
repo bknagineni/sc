@@ -1,3 +1,4 @@
+//version created by nbk
 Global class AccountTriggerHelper
 {
     public static void updateChildLocationMerge(List<Account> lstAccountOld) 
@@ -9,7 +10,7 @@ Global class AccountTriggerHelper
             aloc.MileageHelper__Merge_Flag__c=true;
             lstalupdate.add(aloc);
         }
-        update lstalupdate;
+        update lstalupdate;//comment from 2nd file, assuming htat this is 2nd
     }
 }
          //
